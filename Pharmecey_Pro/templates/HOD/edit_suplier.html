@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %}View Category{% endblock%}
+{% block body_block %}
+
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+       <div class="page-header">
+          <div class="row align-items-center">
+             <div class="col">
+                <h3 class="page-title">Edit Supplier</h3>
+                <ul class="breadcrumb">
+                   <li class="breadcrumb-item"><a href="students.html">Supplier</a></li>
+                   <li class="breadcrumb-item active">Edit Supplier</li>
+                </ul>
+                {% include "include/msg.html" %}
+             </div>
+          </div>
+       </div>
+       <div class="row">
+          <div class="col-sm-12">
+             <div class="card">
+                <div class="card-body">
+                   <form method="POST" action="{% url 'Pharmacey_App:Update_Suppplier' %}">
+                     {% csrf_token %}
+                      <div class="row">
+                         <div class="col-12">
+                            <h5 class="form-title"><span>Edit Supplier</span></h5>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Name</label>
+                               <input type="text" value="{{suplier.name}}"  name="name" class="form-control">
+                               <input type="text" value="{{suplier.id}}"  name="suplier_id" class="form-control" hidden>
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Phone</label>
+                               <input type="text" value="{{suplier.phone}}" name="phone" class="form-control">
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Email</label>
+                               <input type="text" value="{{suplier.email}}" name="email" class="form-control">
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Company</label>
+                               <input type="text" value="{{suplier.company}}" name="company" class="form-control">
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Product</label>
+                               <input type="text" value="{{suplier.product}}" name="product" class="form-control">
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Address</label>
+                               <div>
+                                  <input type="text" value="{{suplier.address}}" name="address" class="form-control">
+                               </div>
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Description</label>
+                               <textarea name="description" name="description" id="" cols="70" rows="8">{{suplier.description}}</textarea>
+                            </div>
+                         </div>
+                         <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+</div>
+
+
+{%endblock%}

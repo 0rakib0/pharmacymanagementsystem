@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %}View Category{% endblock%}
+{% block body_block %}
+
+<div class="card-body">
+    <div class="page-header">
+       <div class="row align-items-center">
+          <div class="col">
+             <h3 class="page-title">Stock Out Medicine</h3>
+             <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Stock Out Medicine</li>
+             </ul>
+             {% include "include/msg.html" %}
+          </div>
+          <div class="col-auto text-right float-right ml-auto">
+             <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+             <a href="" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+          </div>
+       </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0 table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        MEDICINE NAME
+                    </th>
+                    <th class="text-center">Catagory</th>
+                    <th class="text-center">Quintity</th>
+                    <th class="text-center">Expire Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for i in Stock_out %}
+                <tr>
+                    <td>
+                        <div class="d-inline-block align-middle">
+                            <img src="/media/{{i.medicine_img}}" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                            <div class="d-inline-block">
+                                <h6>{{i.medicine_name}}</h6>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center">{{i.Category.catagory_name}}</td>
+                    <td class="text-center badge badge-danger">{{i.quatity}}</td>
+                    <td class="text-center">{{i.exire_date}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body_block %}
+<div class="pcoded-content">
+  <!-- [ breadcrumb ] start -->
+  <div class="page-header">
+      <div class="page-block">
+          <div class="row align-items-center">
+              <div class="col-md-12">
+                {% include "include/msg.html" %}
+                  <div class="page-header-title">
+                      <h5 class="m-b-10">Dashboard Analytics</h5>
+                  </div>
+                  <ul class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                      <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- [ breadcrumb ] end -->
+  <!-- [ Main Content ] start -->
+  <div class="row">
+      <!-- table card-1 start -->
+      <div class="col-md-12 col-xl-4">
+          <div class="card flat-card">
+              <div class="row-table">
+                  <div class="col-sm-6 card-body br">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <i class="fa-solid fa-file-invoice-dollar text-success"></i>
+                          </div>
+                          <div class="col-sm-8 text-md-center">
+                              <h5>BDT {{today_total_sale}}</h5>
+                              <span><small>TODAY'S SALES</small></span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6 card-body">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <i class="fa-solid fa-comments-dollar text-danger"></i>
+                          </div>
+                          <br/>
+                          <div class="col-sm-8 text-md-center">
+                              <h5>BDT {{yesterday_total_sale}}</h5>
+                              <span><small>YESTERDAY SALES</small></span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row-table">
+                  <div class="col-sm-6 card-body">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <i class="fa-solid fa-chart-column text-warning"></i>
+                          </div>
+                          <div class="col-sm-8 text-md-center">
+                              <h5>{{total_sale}}</h5>
+                              <span><small>TOTAL REVENUE</small></span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+      </div>
+      <!-- table card-1 end -->
+      <!-- table card-2 start -->
+      <div class="col-md-12 col-xl-4">
+          <div class="card flat-card">
+              <div class="row-table">
+                  <div class="col-sm-6 card-body br">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <i class="fa-solid fa-people-group text-success"></i>
+                          </div>
+                          <div class="col-sm-8 text-md-center">
+                              <h5>{{suplier.count}}</h5>
+                              <span>SUPPLIERS</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6 card-body">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <i class="fa-solid fa-pills text-success"></i>
+                          </div>
+                          <div class="col-sm-8 text-md-center">
+                              <h5>{{Stock_out}}</h5>
+                              <span>STOCK OUT</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row-table">
+                  <div class="col-sm-6 card-body br">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <i class="fa-solid fa-user-nurse text-success"></i>
+                          </div>
+                          <div class="col-sm-8 text-md-center">
+                              <h5>{{user}}</h5>
+                              <span>USER</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-6 card-body">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <i class="fa-solid fa-bars text-success"></i>
+                          </div>
+                          <div class="col-sm-8 text-md-center">
+                              <h5>{{catagory}}</h5>
+                              <span>ALL CETAGORYS</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- widget-success-card start -->
+          
+          <!-- widget-success-card end -->
+      </div>
+      <!-- table card-2 end -->
+      <!-- Widget primary-success card start -->
+      <div class="col-md-12 col-xl-4">
+          <div class="card support-bar overflow-hidden">
+              <div class="card-body pb-0">
+                  <h2 class="m-0">{{medicine}}</h2>
+                  <span class="text-c-blue">TOTALL MEDICINE</span>
+                  <p class="mb-3 mt-3">Total number of medicine in the pharmecy</p>
+              </div>
+              <div class="card-footer bg-primary text-white">
+                  <div class="row text-center">
+                      <div class="col">
+                          <h4 class="m-0 text-white">{{medicine}}</h4>
+                          <span>Available</span>
+                      </div>
+                      <div class="col">
+                          <h4 class="m-0 text-white">5</h4>
+                          <span><small>Running Out</small></span>
+                      </div>
+                      <div class="col">
+                          <h4 class="m-0 text-white">{{Stock_out}}</h4>
+                          <span>Stock Out</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Widget primary-success card end -->
+
+      <!-- prject ,team member start -->
+      <div class="col-xl-12 col-md-12">
+          <div class="card table-card">
+              <div class="card-header">
+                  <h5>Today's Sales</h5>
+                  <div class="card-header-right">
+                      <div class="btn-group card-option">
+                          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="feather icon-more-horizontal"></i>
+                          </button>
+                          <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                              <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                              <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                              <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                              <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-body p-0">
+                  <div class="table-responsive">
+                      <table class="table table-hover mb-0">
+                          <thead>
+                              <tr>
+                                  <th>
+                                      <div class="chk-option">
+                                          <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                                              <input type="checkbox" class="custom-control-input">
+                                              <span class="custom-control-label"></span>
+                                          </label>
+                                      </div>
+                                      MEDICINE
+                                  </th>
+                                  <th class="text-center">QUANTITY</th>
+                                  <th class="text-center">UNIT PRICE</th>
+                                  <th class="text-center">TOTALL PRICE</th>
+                                  <th class="text-center">DATE</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            {% for i in today_sale %}
+                              <tr>
+                                  <td>
+                                      <div class="chk-option">
+                                          <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
+                                              <input type="checkbox" class="custom-control-input">
+                                              <span class="custom-control-label"></span>
+                                          </label>
+                                      </div>
+                                      <div class="d-inline-block align-middle">
+                                          <img src="/media/{{i.Product.medicine.medicine_img}}" alt="user image" class="img-radius wid-40 align-top m-r-15">
+                                          <div class="d-inline-block">
+                                              <h6>{{i.Product.medicine.medicine_name}}</h6>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  <td class="text-center">{{i.quntity}}</td>
+                                  <td class="text-center">{{i.Product.selling_Price}}</td>
+                                  <td class="text-center">{{i.get_total_price}}</td>
+                                  <td class="text-center">{{i.sale_date}}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- prject ,team member start -->
+  </div>
+  <!-- [ Main Content ] end -->
+</div>
+{% endblock%}

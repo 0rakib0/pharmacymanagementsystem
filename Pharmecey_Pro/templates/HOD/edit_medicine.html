@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %}View Category{% endblock%}
+{% block body_block %}
+
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+       <div class="page-header">
+          <div class="row align-items-center">
+             <div class="col">
+                <h3 class="page-title">Edit Medicie</h3>
+                <ul class="breadcrumb">
+                   <li class="breadcrumb-item"><a href="students.html">Medicine</a></li>
+                   <li class="breadcrumb-item active">Edit Medicie</li>
+                </ul>
+             </div>
+             {% include "include/msg.html" %}
+          </div>
+       </div>
+       <div class="row">
+          <div class="col-sm-12">
+             <div class="card">
+                <div class="card-body">
+                   <form method="POST" action="{% url 'Pharmacey_App:update_medicine' %}">
+                     {% csrf_token %}
+                      <div class="row">
+                         <div class="col-12">
+                            <h5 class="form-title"><span>Edit Medicie</span></h5>
+                         </div>
+                         <div class="col-12">
+                           <div class="form-group">
+                              <label>Medicine Name</label>
+                              <select class="form-control" name="medicine_id">
+                                 <option value="{{medicine.medicine.id}}">{{medicine.medicine.medicine_name}}</option>
+                                 {% for i in stock %}
+                                 <option value="{{i.id}}">{{i.medicine_name}}</option>
+                                 {% endfor %}
+                              </select>
+                              <input type="number" value="{{medicine.id}}" name="medicine_id2" hidden>
+                           </div>
+                        </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Selling Price</label>
+                               <input type="number" value="{{medicine.selling_Price}}" name="selling_price" class="form-control">
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Discount(%)</label>
+                                {% if medicine.discount %}
+                                <input type="text" value="{{medicine.discount}}" name="discount" class="form-control">
+                                {% else %}
+                                <input type="text" value="0" name="discount" class="form-control">
+                                {% endif %}
+                            </div>
+                         </div>
+                         <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                               <label>Product Description</label>
+                               <textarea name="description" id="" cols="45" rows="5">{{medicine.Description}}</textarea>
+                            </div>
+                         </div>
+                         <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                         </div>
+                      </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+</div>
+
+
+{%endblock%}
